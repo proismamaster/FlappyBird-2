@@ -1,0 +1,17 @@
+{
+    "name":"Flappy Bird 2",
+    "short_name": "Flappy 2",
+    "description" : "Un entusiasmante remake dello storico gioco Flappy Bird, con l'aggiunta delle modalita per un'esperienza di gioco mozzafiato!",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "immagini/oip.jpg",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ]
+}

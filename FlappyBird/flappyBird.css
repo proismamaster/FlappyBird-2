@@ -1,0 +1,630 @@
+@font-face {
+    font-family: "fontTimer";
+    src: url(./fonts/square_sans_serif_7.ttf);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background-size: 100% 100%;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center; /* Centra verticalmente e orizzontalmente */
+    overflow: hidden; /* Evita scroll */
+    position: relative;
+}
+#points {
+    font-family: fontTimer;
+    font-size: 4vw;
+    text-align: center;
+    position: absolute;
+    transform: translateY(-20vw) !important;
+    transform: translateX(-50%);
+}
+
+.confirmButton {
+    position: absolute;
+    display: inline-block;
+    margin: 1vw;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745; /* Verde conferma */
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    width: 5vw;
+    height: 2vw;
+    margin-left: 3.5vw;
+    top: 80% !important;
+}
+
+.confirmButton:hover {
+    background-color: #218838; /*Verde piÃ¹ scuro al passaggio */
+    width: 5.2vw;
+    height: 2.2vw;
+}
+
+
+.backButton {
+    position: absolute;
+    display: inline-block;
+    margin: 1vw;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    background-color: #dc3545; /* Rosso per tornare indietro */
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    width: 5vw;
+    height: 2vw;
+    top: 80% !important;
+    left: 50%;
+}
+
+.backButton:hover {
+    background-color: #c82333; /* Rosso piÃ¹ scuro al passaggio */
+    width: 5.2vw;
+    height: 2.2vw;;
+}
+
+
+.customLabel,
+.customRange,
+.confirmButton,
+.backButton{
+    transform: translateY(0.8vw); /* Regola il valore (2vw) per lo spostamento */
+}
+
+.customLabel {
+    display: block; /* Mantiene la label sopra lo slider */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1vw;
+    margin: 0.5vw 3vw 0.3vw 3vw; /* Margine sopra, destra, sotto, sinistra */
+    font-weight: bold;
+    color: black;
+}
+
+.customRange {
+    position: relative;
+    display: inline-block; 
+    margin: 0vw 0.5vw 0vw 3vw; /* Regola i margini per allineare con labelNumber */
+    width: 10vw;
+    height: 2vw;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    background-image: linear-gradient(#ff4500, #ff4500);
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+    cursor: pointer; /* Aggiunge un cursore per indicare l'interattivitÃ  */
+}   
+
+.labelNumber {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1vw;
+    margin: 0 0 0 1vw; /* Regola i margini per allineare con customRange */
+    font-weight: bold;
+    color: black;
+    border: solid 0.01vw;
+    border-style: solid;
+    left: 70%;
+}
+
+#board {
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top -3vw;
+    border: solid 0.3vw;
+    width: 35vw;
+    height: 40vw;
+    touch-action: none; /* Disabilita lo zoom su mobile */
+}
+.boardEasy{
+    background-image: url(immagini/easy/backgroundEasy.jpg);
+}
+.boardNormal{
+    background-image: url(immagini/normal/backgroundNormal.png);
+}
+.boardHard{
+    background-image: url(immagini/hard/backgroundHard.png);
+}
+.boardCustom{
+    background-image: url(immagini/custom/backgroundCustom.jpg);
+}
+.bodyEasy{
+    background: url(immagini/easy/blurBackgroundEasy.png) no-repeat center center fixed;
+    background-size: cover; 
+}
+.bodyNormal{
+    background: url(immagini/normal/blurBackgroundNormal.png)no-repeat center center fixed;
+    background-size: cover; 
+}
+.bodyHard{
+    background: url(immagini/hard/blurBackgroundHard.png)no-repeat center center fixed;
+    background-size: cover; 
+}
+.bodyCustom{
+    background: url(immagini/custom/blurBackgroundCustom.png)no-repeat center center fixed;
+    background-size: cover; 
+}
+
+#bestScoreMenu{
+    background-image: url(immagini/scoreMenu.png);
+    width: 33vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+    height: 25vw; /* Aumenta l'altezza per dispositivi mobili */
+    position: relative;
+    top: -80%;
+    left: 2.5%;
+    background-size: cover;
+}
+
+#gameScreen {
+    margin-top: 5vw;
+    width: 35vw;
+    height: 40vw;
+    background-position: center top;
+    position: relative;
+}
+
+#menu {
+   background-image: url(immagini/menu/menuBackground.png);
+    width: 18vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+    height: 27vw; /* Aumenta l'altezza per dispositivi mobili */
+    position: relative;
+    top: -80%;
+    left: 25%;
+    background-size: cover;
+}
+
+#gameOverMenu, #gameOverMenuDiv{
+    width: 32vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+    height: 22vw; /* Aumenta l'altezza per dispositivi mobili */
+    position: absolute;
+    top: 46%;
+    left: 49.7%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+
+.menuButton {
+    width: 15Vw; /* Aumenta la larghezza per dispositivi mobili */
+    height: 5.2Vw; /* Aumenta l'altezza per dispositivi mobili */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-size: cover;
+    border: 0px solid;
+    background-color: rgba(0, 0, 255, 0);
+}
+
+.menuButton:hover {
+    width: 16vw; /* Leggero aumento delle dimensioni al passaggio del mouse */
+    height: 5.3vw;
+    width: 15.2vw;
+}
+
+#bestScore {
+    background-image: url(immagini/menu/score.png);
+    top: 40%; /* Regola la posizione */
+}
+
+#start {
+    background-image: url(immagini/menu/play.png);
+    top: 15%; /* Regola la posizione */
+}
+#mode {
+    background-image: url(immagini/menu/mode.png);
+    top: 65%; /* Regola la posizione */
+}
+
+#audioButton {
+    background-image: url(immagini/menu/audioButton.png);
+    top: 55%; /* Regola la posizione */
+}
+
+#resumeButton {
+    background-image: url(immagini/menu/resumeButton.png);
+    top: 35%; /* Regola la posizione */
+}
+#menuButton {
+    background-image: url(immagini/menu/homeButton.png);
+    top: 75%; /* Regola la posizione */
+}
+
+#easyButton{
+    background-image: url(immagini/menu/easy.png);
+    top: 5%; /* Regola la posizione */
+}
+#normalButton{
+    background-image: url(immagini/menu/normal.png);
+    top: 25%; /* Regola la posizione */
+}
+#hardButton{
+    background-image: url(immagini/menu/hard.png);
+    top: 45%; /* Regola la posizione */
+}
+#personalizedButton{
+    background-image: url(immagini/menu/custom.png);
+    top: 65%; /* Regola la posizione */
+}
+#retryButton{
+    background-image: url(immagini/menu/retryButton.png);
+}
+#homeButton{
+    background-image: url(immagini/menu/homeButton.png);
+}
+
+#retryButton:hover {
+    width: 16vw; /* Leggero aumento delle dimensioni al passaggio del mouse */
+    height: 5vw;
+}
+#homeButton:hover {
+    width: 15.8vw; /* Leggero aumento delle dimensioni al passaggio del mouse */
+    height: 5vw;
+}
+#pauseButton{
+    position: absolute;
+    height: 3vw;
+    width: 3vw;
+    background-image: url(immagini/pausebutton.png);
+    background-size: cover;
+    background-color: rgba(0, 0, 255, 0);
+    border: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+#pauseButton:hover{
+    height: 3.2vw;
+    width: 3.2vw;
+}
+#gameOverMenudiv{
+    position: relative;
+}
+#retryButton.menuButton{
+    position: absolute;
+    bottom: 20%;
+    left: 33%;
+    width: 11vw;
+    height: 4vw;
+}
+#homeButton.menuButton{
+    position: absolute;
+    bottom: 20%;
+    left: 70%;
+    width: 11vw;
+    height: 4vw;
+    
+}
+
+#rangeGapNumber, #rangeGapLabel, #rangeGap{
+    position: absolute;
+    top: 15%;
+}
+#rangeJumpNumber, #rangeJumpLabel, #rangeJump{
+    position: absolute;
+    top: 30%;
+}
+#rangeGravityNumber, #rangeGravityLabel, #rangeGravity{
+    position: absolute;
+    top: 45%;
+}
+#rangeVelocityNumber, #rangeVelocityLabel, #rangeVelocity{
+    position: absolute;
+    top: 60%;
+}
+#rangeSpawnRateNumber, #rangeSpawnRateLabel, #rangeSpawnRate{
+    position: absolute;
+    top: 75%;
+}
+#rangeSpawnRateLabel, #rangeVelocityLabel,#rangeGravityLabel, #rangeJumpLabel, #rangeGapLabel{
+    transform: translateY(-150%) !important;
+}
+
+#rangeGameSounds{
+    position: absolute;
+    top: 65%;
+    height: 3vw;
+}
+#rangeGameSoundsLabel{
+    font-size: 1.5vw;
+    position: absolute;
+    top: 55%;
+}
+#rangeGameMusic{
+    position: absolute;
+    top: 40%;
+    height: 3vw;
+}
+#rangeGameMusicLabel{
+    font-size: 1.5vw;
+    position: absolute;
+    top: 30%;
+}
+#rangeGameMusicNumber{
+    position: absolute;
+    top: 42%;
+    left: 68%;
+    padding: 0.4vw;
+}
+#rangeGameSoundsNumber{
+    position: absolute;
+    top: 68%;
+    left: 70%;
+    padding: 0.4vw;
+}
+.bestLabel{
+    font-size: 2.8vw;
+    position: absolute;
+    font-weight: bold;
+    position: absolute;
+    top: 55%;
+}
+#bestEasy{
+    position: absolute;
+    left: 16%;
+    transform: translateX(-50%);/* QUetsa regola mi permette di centrare il contneutop della label in base allo spsotamento fatt ocon left, non tiene piu conto solo del bordo sisntiro quando faccio left ma del centro della label*/
+
+}
+#bestNormal{
+    left: 50%;
+    transform: translateX(-50%);
+}
+#bestHard{
+    left: 84.5%;
+    transform: translateX(-50%);
+}
+#backButtonScore{
+    width: 30vw;
+    left: 2%;
+    top:100% !important;
+}
+#backModeButton{
+    width: 15vw;
+    left: 4%;
+    top:79% !important;
+    color: white;
+}
+#optionMenu{
+    background-image: url(immagini/optionMenu.png);
+    width: 18vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+    height: 30vw; /* Aumenta l'altezza per dispositivi mobili */
+    position: relative;
+    top: -87%;
+    left: 25%;
+    background-size: cover;
+}
+/* Media query per schermi piccoli */
+@media screen and (max-width: 700px) { 
+    #optionMenu{
+        background-image: url(immagini/optionMenu.png);
+        width: 40vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+        height: 70vw; /* Aumenta l'altezza per dispositivi mobili */
+        position: relative;
+        top: -87%;
+        left: 25%;
+        background-size: cover;
+    }
+    #backModeButton{
+        width: 30vw;
+        left: 6%;
+        top:82% !important;
+    }
+    #backButtonScore{
+        width: 70vw;
+        left: 2.5%;
+        top:100% !important;
+    }
+    .bestLabel{
+        font-size: 6vw;
+        top: 56%;
+    }
+    #bestScoreMenu{
+        background-image: url(immagini/scoreMenu.png);
+        width: 75vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+        height: 57vw; /* Aumenta l'altezza per dispositivi mobili */
+        position: relative;
+        top: -80%;
+        left: 2.5%;
+        background-size: cover;
+    }
+    #rangeGameMusicNumber{
+        top: 45%;
+        left: 75%;
+    }
+    #rangeGameSoundsNumber{
+        top: 66%;
+        left: 75%;
+    }
+    #rangeGameSoundsLabel{
+        font-size: 3.3vw;
+        left: 10%;
+        top: 57%;
+        
+    }
+    #rangeGameMusicLabel{
+        font-size: 3.3vw;
+        left: 10%;
+        top: 37%;
+    }
+    #rangeGameMusic{
+        left: 5%;
+        top: 45%;
+    }
+    #rangeGameSounds{
+        left: 5%;
+        
+    }
+    #pauseButton{
+        height: 8vw;
+        width: 8vw;
+    }
+    #pauseButton:hover{
+        height: 8.5vw;
+        width: 8.5vw;
+    }
+    #gameScreen{
+        margin-top: 10vw;
+        width: 80vw;
+        height: 90vw;
+        position: relative;
+    }
+    #retryButton{
+        background-image: url(immagini/menu/retryButton.png);
+        top: 70%; /* Regola la posizione */
+        left: 52%;
+    }
+    #homeButton{
+        background-image: url(immagini/menu/homeButton.png);
+        top: 70%; /* Regola la posizione */
+        left: 52%;
+    }
+    #retryButton:hover {
+        width: 31vw; /* Leggero aumento delle dimensioni al passaggio del mouse */
+        height: 11vw;
+    }
+    #homeButton:hover {
+        width: 31vw; /* Leggero aumento delle dimensioni al passaggio del mouse */
+        height: 11vw;
+    }
+    
+    #board {
+        width: 80vw;
+        height: 90vw;
+        margin-top: 0vw;
+        background-position: center top -8vw;
+    }
+    #points {
+        transform: translateY(-1.2vw) !important;
+        font-size: 10vw;
+        top: -4% !important; /* Regola la posizione */
+    }
+    #menu {
+        width: 36vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+        height: 54vw; /* Aumenta ulteriormente l'altezza per dispositivi mobili */
+        
+    }
+    .menuButton {
+        width: 30vw; /* Aumenta ulteriormente la larghezza per dispositivi mobili */
+        height: 10.4vw; /* Aumenta ulteriormente l'altezza per dispositivi mobili */
+    }
+    #gameOverMenu{
+        width: 60vw;
+        height: 42vw;
+        margin-top: 0vw;
+        left: 48%;
+    }
+    .menuButton:hover {
+        width: 31vw; /* Leggero aumento delle dimensioni al passaggio del mouse */
+        height: 10.7vw;
+    }
+    .customLabel {
+       
+        position: absolute;
+        display: block; /* Mantiene la label sopra lo slider */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2.1vw;
+        margin: 0vh 3vw 0.3vw 3vw; /* Margine sopra, destra, sotto, sinistra */
+        font-weight: bold;
+        color: black;
+    }
+    
+    .customRange {
+        top: 1.5vw;
+        position: absolute;
+        display: inline-block; /* Cambiato da block a inline-block */
+        margin: 0vw 1vw 0vw 3vw; /* Regola i margini per allineare con labelNumber */
+        width: 22vw;
+        height: 0.2vh;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 5px;
+        background-image: linear-gradient(#ff4500, #ff4500);
+        background-size: 70% 100%;
+        background-repeat: no-repeat;
+        cursor: pointer; /* Aggiunge un cursore per indicare l'interattivitÃ  */
+    }
+    
+    .labelNumber {
+        position: absolute;
+        display: inline-block; /* Cambiato da block a inline-block */
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2vw;
+        margin: 0 0 0 1vw; /* Regola i margini per allineare con customRange */
+        font-weight: bold;
+        color: black;
+        border: solid 0.01vw;
+        border-style: solid;
+    }
+    .confirmButton {
+        position: absolute;
+        display: inline-block;
+        margin: 1vw;
+        font-size: 2vw;
+        font-weight: bold;
+        color: white;
+        background-color: #28a745; /* Verde conferma */
+        border: none;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.1s;
+        width: 12vw;
+        height: 4vw;
+        margin-left: 4.5vw;
+        top: 1vh;
+        left: 4%;
+    }
+    
+    .confirmButton:hover {
+        background-color: #218838; /*Verde piÃ¹ scuro al passaggio */
+        width: 12.5vw;
+        height: 4.2vw;
+    }
+    
+    .backButton {
+        position: absolute;
+        display: inline-block;
+        margin: 1vw;
+        font-size: 2vw;
+        font-weight: bold;
+        color: white;
+        background-color: #dc3545; /* Rosso per tornare indietro */
+        border: none;
+        border-radius: 1vw;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.1s;
+        width: 12vw;
+        height: 4vw;
+        top: 1vh;
+    }
+    
+    .backButton:hover {
+        background-color: #c82333; /* Rosso piÃ¹ scuro al passaggio */
+        width: 12.5vw;
+        height: 4.2vw;
+    }
+    #retryButton.menuButton{
+        position: absolute;
+        left: 20%;
+        width: 20vw;
+        height: 7vw;
+    }
+    #homeButton.menuButton{
+        position: absolute;
+        left: 85%;
+        width: 20vw;
+        height: 7vw;
+        
+    }
+}
